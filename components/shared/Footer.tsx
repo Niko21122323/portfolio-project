@@ -44,7 +44,10 @@ const Footer = () => {
 
   return (
     <footer ref={footerRef} className="bg-[#101113] overflow-hidden">
-      <div ref={footerContainerRef} className="container mx-auto px-6">
+      <div
+        ref={footerContainerRef}
+        className="container mx-auto px-6 will-change-transform"
+      >
         <div className="flex flex-col gap-24 sm:gap-44 pt-24 lg:pt-36 max-sm:pb-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10">
             {footerData.map((data) => (
