@@ -66,13 +66,13 @@ export const getFooterData = (): FooterData[] => {
       links: [
         {
           id: 1,
-          label: "stojanovski21n@gmail.com",
+          label: "Email",
           url: "mailto:stojanovski21n@gmail.com",
           target: "_self",
         },
         {
           id: 2,
-          label: "+ 389 78 333 705",
+          label: "Phone",
           url: "tel:078333705",
           target: "_self",
         },
