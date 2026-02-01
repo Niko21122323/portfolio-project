@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { GoPerson } from "react-icons/go";
 import { useRef, useState } from "react";
@@ -10,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const contentRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const navbarLinks = [
     {
@@ -39,9 +39,13 @@ const Navbar = () => {
         ease: "power3.out",
       });
     } else {
+      // Get button dimensions
+      const buttonWidth = buttonRef.current?.offsetWidth || 0;
+      const buttonHeight = buttonRef.current?.offsetHeight || 0;
+
       gsap.to(menuRef.current, {
-        width: "0%",
-        height: "0%",
+        width: `${buttonWidth}px`,
+        height: `${buttonHeight}px`,
         duration: 0.6,
         ease: "power3.out",
       });
@@ -59,7 +63,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white py-10">
-      <div className="relative container mx-auto max-w-7xl px-6">
+      <div className="relative container mx-auto xl:max-w-7xl px-6">
         <div className="flex items-center justify-between">
           <div>
             <Link href="/">Nikola</Link>
@@ -71,9 +75,10 @@ const Navbar = () => {
               </Link>
             ))}
             <button
+              ref={buttonRef}
               type="button"
               onClick={toggleMenu}
-              className="relative z-[60] flex items-center bg-black py-3 px-6 w-fit overflow-hidden cursor-pointer hover:bg-[#2092e9] transition-colors duration-500 ease-in-out group"
+              className="relative z-[60] flex items-center bg-black py-3 px-6 w-fit rounded-full overflow-hidden cursor-pointer"
             >
               <div className="relative z-10 pr-3">
                 <GoPerson className="text-base text-white" />
@@ -83,28 +88,24 @@ const Navbar = () => {
                   My Socials
                 </span>
               </div>
-              <div className="absolute bottom-0 left-0 w-full h-0 bg-[#2092e9] group-hover:h-full transition-all duration-300 ease-in-out z-0"></div>
             </button>
           </div>
         </div>
-
         {/* Animated wrapper */}
         <div
           ref={menuRef}
           style={{
-            width: "0%",
-            height: "0%",
+            width: "0px",
+            height: "0px",
             overflow: "hidden",
           }}
-          className="absolute top-0 right-6 bg-black z-50"
+          className="absolute top-0 right-6 bg-black z-50 rounded-3xl"
         >
-          {/* Fixed-size content container */}
           <div
             ref={contentRef}
             style={{ opacity: 0 }}
             className="w-[400px] h-[400px] p-10 text-white"
           >
-            {/* Your content here */}
             <h3 className="text-xl font-bold mb-4">My Socials</h3>
             <ul className="space-y-3">
               <li>

@@ -11,7 +11,7 @@ const PrimaryButton = ({ text, link, children }: PrimaryButtonProps) => {
   const icon =
     children &&
     cloneElement(children, {
-      className: "text-white text-sm",
+      className: "text-white text-base",
     });
 
   return (
